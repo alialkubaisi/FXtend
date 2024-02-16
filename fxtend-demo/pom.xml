@@ -14,4 +14,12 @@
     <artifactId>fxtend-demo</artifactId>
     <version>1.0.0</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.alialkubaisi</groupId>
+            <artifactId>fxtend</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
 </project>
