@@ -1,0 +1,29 @@
+package org.fxtend.password;
+
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+public class I18NPasswordField
+{
+    public static ResourceBundle getResourceBundle(String language)
+    {
+        Locale loc = Locale.of(language);
+        String baseName = "org.fxtend.password.password-field";
+
+        return ResourceBundle.getBundle(baseName, loc);
+    }
+
+    /**
+     * @param message which you want to have translated
+     * @return String the translated Message as String
+     */
+    public static String getTranslatedMessage(String message)
+    {
+        return getMessageOfLocale(message, Locale.getDefault().getLanguage());
+    }
+
+    public static String getMessageOfLocale(String message, String locale)
+    {
+        return getResourceBundle(locale).getString(message);
+    }
+}
