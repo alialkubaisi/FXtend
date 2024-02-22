@@ -13,6 +13,7 @@ import javafx.util.Duration;
 import org.controlsfx.control.PopOver;
 import org.controlsfx.control.textfield.CustomPasswordField;
 import org.controlsfx.control.textfield.CustomTextField;
+import org.fxtend.util.EPath;
 import org.fxtend.util.ProjectUtil;
 import org.kordamp.ikonli.materialdesign2.MaterialDesignE;
 
@@ -90,11 +91,11 @@ public class PasswordField extends VBox
         strengthPopover = new PopOver();
         strengthPopover.setContentNode(loadPopoverContainer());
 
-        strengthPopover.getStyleClass().add("popover-password");
         strengthPopover.setArrowLocation(PopOver.ArrowLocation.LEFT_CENTER);
         strengthPopover.setCloseButtonEnabled(false);
         strengthPopover.setDetachable(false);
         strengthPopover.setAutoHide(false);
+        strengthPopover.setAnimated(true);
 
         strengthPopover.setCornerRadius(12); // default 6
         strengthPopover.setFadeInDuration(Duration.seconds(0.4)); // default 0.2
@@ -142,10 +143,6 @@ public class PasswordField extends VBox
                 if (!strengthPopover.isShowing())
                 {
                     strengthPopover.show(this);
-
-                    // improve location (must have done here after show
-                    strengthPopover.setX(strengthPopover.getX() + 5);
-                    strengthPopover.setY(strengthPopover.getY() - 8);
                 }
             }
             else if (!textField.isFocused() && !passwordField.isFocused())
@@ -157,7 +154,7 @@ public class PasswordField extends VBox
 
     private VBox loadPopoverContainer()
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PasswordPopoverContainer.fxml"), I18NPasswordField.getResourceBundle("en"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(EPath.PASSWORD_FIELD_FXML.getPath()), I18NPasswordField.getResourceBundle("en"));
 
         VBox popoverContainer = null;
         try
