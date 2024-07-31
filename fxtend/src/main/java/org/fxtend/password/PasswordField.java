@@ -3,6 +3,7 @@ package org.fxtend.password;
 import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputControl;
@@ -136,7 +137,10 @@ public class PasswordField extends VBox
             {
                 if (!strengthPopover.isShowing())
                 {
-                    strengthPopover.show(this);
+                    Bounds bounds = this.localToScreen(this.getBoundsInLocal());
+                    double popOverX = bounds.getMaxX();
+                    double popOverY = bounds.getMinY() + (bounds.getHeight() / 2);
+                    strengthPopover.show(this, popOverX, popOverY);
                 }
             }
             else if (!textField.isFocused() && !passwordField.isFocused())
