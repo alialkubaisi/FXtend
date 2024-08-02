@@ -42,9 +42,13 @@ The `SecurePasswordField` control in FXtend is an enhanced version of the defaul
 includes the following features:
 
 - **Eye Icon to Show/Hide Password:** Users can toggle the visibility of the password by clicking an eye icon.
+  ![SecurePasswordField](fxtend-demo/images/password_field_masked.png)
+  ![SecurePasswordField](fxtend-demo/images/password_field_unmasked.png)
 - **Password Strength Validation:** An optional popup can display the strength of the password as the user types.
+  ![SecurePasswordField](fxtend-demo/images/password_strength_popup.gif)
 
 ### AutoCompleteField
 
 The `AutoCompleteField` control in FXtend provides a text field with autocomplete functionality. It includes
 a `searchMode` parameter to determine whether suggestions should match based on "contains", "start with", or "end with".
+- ![SecurePasswordField](fxtend-demo/images/auto_complete_fields.gif)
