@@ -22,3 +22,74 @@
     -fx-background-color: #A2A0A0;
     -fx-text-fill: white;
 }
+
+.auto-complete-list-view .scroll-pane {
+    -fx-background-color: white;
+    -fx-background-insets: 0.0;
+    -fx-padding: 0.0;
+}
+
+.auto-complete-list-view .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.auto-complete-list-view .scroll-bar:vertical {
+    -fx-background-color: white;
+    -fx-background-radius: 2.0em;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.auto-complete-list-view .scroll-bar:horizontal {
+    -fx-background-color: white;
+    -fx-background-radius: 2.0em;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.auto-complete-list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #3f51b5;
+    -fx-background-radius: 2.0em;
+}
+
+.auto-complete-list-view .scroll-bar:horizontal .thumb {
+    -fx-background-color: #3f51b5;
+    -fx-background-radius: 2.0em;
+}
+
+.auto-complete-list-view .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 2.0em;
+}
+
+.auto-complete-list-view .scroll-bar:horizontal .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 2.0em;
+}
+
+.auto-complete-list-view .scroll-bar .increment-arrow,
+.auto-complete-list-view .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+}
+
+.auto-complete-list-view .scroll-bar:vertical > .increment-button,
+.auto-complete-list-view .scroll-bar:vertical > .decrement-button {
+    -fx-padding: 5.0 1.0 5.0 1.0;
+    -fx-background-color: transparent;
+}
+
+.auto-complete-list-view .scroll-bar:horizontal > .increment-button,
+.auto-complete-list-view .scroll-bar:horizontal > .decrement-button {
+    -fx-padding: 1.0 5.0 1.0 5.0;
+    -fx-background-color: transparent;
+}
+
+.auto-complete-list-view .scroll-pane:focused {
+    -fx-background-insets: 0.0;
+}
+
+.auto-complete-list-view .scroll-pane .corner {
+    -fx-background-insets: 0.0;
+}

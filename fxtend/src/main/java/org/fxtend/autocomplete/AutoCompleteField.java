@@ -100,18 +100,7 @@ public class AutoCompleteField extends TextField
             }
             else
             {
-                String lowerText = newText.toLowerCase();
-                Set<String> searchResult = suggestions.parallelStream()
-                        .filter(item -> {
-                            String lowerItem = item.toLowerCase();
-                            return switch (searchMode)
-                            {
-                                case CONTAINS -> lowerItem.contains(lowerText);
-                                case STARTS_WITH -> lowerItem.startsWith(lowerText);
-                                case ENDS_WITH -> lowerItem.endsWith(lowerText);
-                            };
-                        })
-                        .collect(Collectors.toSet());
+                final Set<String> searchResult = findMatchingSuggestions(newText);
 
                 if (!searchResult.isEmpty())
                 {
@@ -124,6 +113,22 @@ public class AutoCompleteField extends TextField
                 }
             }
         });
+    }
+
+    private Set<String> findMatchingSuggestions(String newText)
+    {
+        String lowerText = newText.toLowerCase();
+        return suggestions.parallelStream()
+                .filter(item -> {
+                    String lowerItem = item.toLowerCase();
+                    return switch (searchMode)
+                    {
+                        case CONTAINS -> lowerItem.contains(lowerText);
+                        case STARTS_WITH -> lowerItem.startsWith(lowerText);
+                        case ENDS_WITH -> lowerItem.endsWith(lowerText);
+                    };
+                })
+                .collect(Collectors.toSet());
     }
 
     /**
@@ -152,7 +157,7 @@ public class AutoCompleteField extends TextField
             suggestionsPopup.show(this);
             Bounds bounds = this.localToScreen(this.getBoundsInLocal());
             double popOverY = bounds.getMinY() + bounds.getHeight();
-            suggestionsPopup.setY(popOverY - 10);
+            suggestionsPopup.setY(popOverY);
         }
     }
 }
