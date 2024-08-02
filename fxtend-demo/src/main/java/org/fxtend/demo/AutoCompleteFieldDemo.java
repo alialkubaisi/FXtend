@@ -10,6 +10,7 @@ import org.fxtend.autocomplete.AutoCompleteField;
 import org.fxtend.autocomplete.SearchMode;
 
 import java.util.List;
+import java.util.Objects;
 
 public class AutoCompleteFieldDemo extends Application
 {
@@ -29,7 +30,6 @@ public class AutoCompleteFieldDemo extends Application
         autoCompleteFieldContains.setMaxWidth(300);
         root.add(autoCompleteFieldContains, 1, 0);
 
-
         final Label startWithLabel = new Label("Start with Field");
         root.add(startWithLabel, 0, 1);
 
@@ -45,6 +45,8 @@ public class AutoCompleteFieldDemo extends Application
         autoCompleteFieldEndWith.setPrefWidth(300);
         autoCompleteFieldEndWith.setMaxWidth(300);
         root.add(autoCompleteFieldEndWith, 1, 2);
+
+        root.getStylesheets().add(Objects.requireNonNull(getClass().getResource(DemoPath.DEMO_PATH_STYLE.getPath())).toExternalForm());
 
         stage.setScene(new Scene(root, 500, 500));
         stage.setTitle("AutoComplete TextField Demo");

@@ -1,0 +1,33 @@
+/* material.css */
+.root {
+    -fx-background-color: #f5f5f5;
+    -fx-padding: 20px;
+    -fx-font-family: 'Roboto', sans-serif;
+}
+
+.text-field {
+    -fx-padding: 10px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused {
+    -fx-border-color: #3f51b5;
+}
+
+.button {
+    -fx-background-color: #3f51b5;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #303f9f;
+}
