@@ -1,0 +1,24 @@
+.auto-complete-list-view {
+    -fx-background-color: white;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+}
+
+/*remove blue border of the first row in list-view default in javafx */
+.auto-complete-list-view:focused .list-cell:focused {
+    -fx-background-color: -fx-table-cell-border-color, -fx-background;
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.auto-complete-list-view .list-cell:odd {
+    -fx-background-color: white;
+}
+
+.auto-complete-list-view .list-cell:hover {
+    -fx-background-color: #CACACA;
+}
+
+.auto-complete-list-view .list-cell:focused:selected {
+    -fx-background-color: #A2A0A0;
+    -fx-text-fill: white;
+}

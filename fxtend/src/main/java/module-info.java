@@ -8,4 +8,5 @@ module fxtend {
     requires org.kordamp.ikonli.core;
 
     opens org.fxtend.password to javafx.fxml;
+    exports org.fxtend.autocomplete;
 }
