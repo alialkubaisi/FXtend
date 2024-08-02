@@ -40,38 +40,38 @@ public class PasswordPopoverContainer implements Initializable
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         // set default min length value in label text
-        labelPasswordStatus.setText(PasswordFieldConstants.PASSWORD_TITLE.getTranslatedMessage("{{length}}", String.valueOf(minLength)));
+        labelPasswordStatus.setText(SecurePasswordFieldConstants.PASSWORD_TITLE.getTranslatedMessage("{{length}}", String.valueOf(minLength)));
 
         passwordProperty.addListener((observable, oldValue, newValue) -> {
             int score = calculatePasswordStrength(newValue);
             // the progress musst be the score divided by the number of all factories
-            passwordStrengthBar.setProgress(score / PasswordField.FACTORS_NUMBER);
+            passwordStrengthBar.setProgress(score / SecurePasswordField.FACTORS_NUMBER);
         });
 
         passwordStrengthBar.progressProperty().addListener((o, oldValue, newValue) -> {
             final double progress = newValue.doubleValue();
             if (progress == 0)
             {
-                labelPasswordStatus.setText(PasswordFieldConstants.PASSWORD_TITLE.getTranslatedMessage("{{length}}", String.valueOf(minLength)));
+                labelPasswordStatus.setText(SecurePasswordFieldConstants.PASSWORD_TITLE.getTranslatedMessage("{{length}}", String.valueOf(minLength)));
             }
             if (progress > 0 && progress < 0.4)
             {
-                labelPasswordStatus.setText(PasswordFieldConstants.PASSWORD_WEAK.getTranslatedMessage());
+                labelPasswordStatus.setText(SecurePasswordFieldConstants.PASSWORD_WEAK.getTranslatedMessage());
                 passwordStrengthBar.setStyle("-fx-accent:" + WEAK_COLOR);
             }
             if (progress >= 0.6)
             {
-                labelPasswordStatus.setText(PasswordFieldConstants.PASSWORD_AVERAGE.getTranslatedMessage());
+                labelPasswordStatus.setText(SecurePasswordFieldConstants.PASSWORD_AVERAGE.getTranslatedMessage());
                 passwordStrengthBar.setStyle("-fx-accent:" + AVERAGE_COLOR);
             }
             if (progress >= 0.8)
             {
-                labelPasswordStatus.setText(PasswordFieldConstants.PASSWORD_GOOD.getTranslatedMessage());
+                labelPasswordStatus.setText(SecurePasswordFieldConstants.PASSWORD_GOOD.getTranslatedMessage());
                 passwordStrengthBar.setStyle("-fx-accent:" + GOOD_COLOR);
             }
             if (progress == 1)
             {
-                labelPasswordStatus.setText(PasswordFieldConstants.PASSWORD_STRONG.getTranslatedMessage());
+                labelPasswordStatus.setText(SecurePasswordFieldConstants.PASSWORD_STRONG.getTranslatedMessage());
                 passwordStrengthBar.setStyle("-fx-accent:" + STRONG_COLOR);
             }
         });
@@ -109,6 +109,6 @@ public class PasswordPopoverContainer implements Initializable
         this.minLength = minLength;
 
         // set min length value in label text after init
-        labelPasswordStatus.setText(PasswordFieldConstants.PASSWORD_TITLE.getTranslatedMessage("{{length}}", String.valueOf(minLength)));
+        labelPasswordStatus.setText(SecurePasswordFieldConstants.PASSWORD_TITLE.getTranslatedMessage("{{length}}", String.valueOf(minLength)));
     }
 }

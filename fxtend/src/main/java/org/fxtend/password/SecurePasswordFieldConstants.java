@@ -1,6 +1,6 @@
 package org.fxtend.password;
 
-public enum PasswordFieldConstants
+public enum SecurePasswordFieldConstants
 {
     PASSWORD_TITLE("password_title"),
     PASSWORD_REQUIRED_MESSAGE("password_required_message"),
@@ -12,7 +12,7 @@ public enum PasswordFieldConstants
 
     private final String constant;
 
-    PasswordFieldConstants(String constant)
+    SecurePasswordFieldConstants(String constant)
     {
         this.constant = constant;
     }

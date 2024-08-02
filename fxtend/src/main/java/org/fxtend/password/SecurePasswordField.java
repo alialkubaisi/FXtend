@@ -20,7 +20,7 @@ import org.kordamp.ikonli.materialdesign2.MaterialDesignE;
 
 import java.io.IOException;
 
-public class PasswordField extends VBox
+public class SecurePasswordField extends VBox
 {
     public static final double FACTORS_NUMBER = 5;
     private final CustomTextField textField = new CustomTextField();
@@ -31,7 +31,7 @@ public class PasswordField extends VBox
     private int minLength = 12; // recommended now
     private PopOver strengthPopover;
 
-    public PasswordField()
+    public SecurePasswordField()
     {
         super(10);
         getChildren().add(passwordField);
@@ -51,7 +51,7 @@ public class PasswordField extends VBox
         textField.textProperty().bindBidirectional(passwordField.textProperty());
     }
 
-    public PasswordField(boolean withStrengthValidation, int minLength)
+    public SecurePasswordField(boolean withStrengthValidation, int minLength)
     {
         this();
         setWithStrengthValidation(withStrengthValidation);
@@ -116,7 +116,7 @@ public class PasswordField extends VBox
                 {
                     int currentNodeIndex = getParent().getChildrenUnmodifiable().indexOf(this);
                     Node nextNode = getParent().getChildrenUnmodifiable().get(currentNodeIndex + 1);
-                    if (nextNode instanceof PasswordField nextPasswordField)
+                    if (nextNode instanceof SecurePasswordField nextPasswordField)
                     {
                         ProjectUtil.setTextFieldFocus(nextPasswordField.getPasswordField());
                     }
@@ -179,8 +179,8 @@ public class PasswordField extends VBox
             }
             else
             {
-                String errorMessage = PasswordFieldConstants.PASSWORD_REQUIRED_MESSAGE.getTranslatedMessage();
-                String title = PasswordFieldConstants.PASSWORD_REQUIRED_TITLE.getTranslatedMessage();
+                String errorMessage = SecurePasswordFieldConstants.PASSWORD_REQUIRED_MESSAGE.getTranslatedMessage();
+                String title = SecurePasswordFieldConstants.PASSWORD_REQUIRED_TITLE.getTranslatedMessage();
                 // TODO Handle error
                 return false;
             }

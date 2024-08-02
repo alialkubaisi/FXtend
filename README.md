@@ -32,9 +32,9 @@ implementation 'com.github.alialkubaisi:fxtend:1.0.0'
 
 ## Controls
 
-### PasswordField
+### SecurePasswordField
 
-The `PasswordField` control in FXtend is an enhanced version of the default JavaFX `PasswordField`. It includes the following features:
+The `SecurePasswordField` control in FXtend is an enhanced version of the default JavaFX `SecurePasswordField`. It includes the following features:
 
 - **Eye Icon to Show/Hide Password:** Users can toggle the visibility of the password by clicking an eye icon.
 - **Password Strength Validation:** An optional popup can display the strength of the password as the user types.
