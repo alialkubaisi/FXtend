@@ -46,4 +46,5 @@ includes the following features:
 
 ### AutoCompleteField
 
-The AutoCompleteField control in FXtend provides a text field with autocomplete functionality.
+The `AutoCompleteField` control in FXtend provides a text field with autocomplete functionality. It includes
+a `searchMode` parameter to determine whether suggestions should match based on "contains", "start with", or "end with".

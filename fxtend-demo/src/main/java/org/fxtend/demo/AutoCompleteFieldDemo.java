@@ -3,9 +3,11 @@ package org.fxtend.demo;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.fxtend.autocomplete.AutoCompleteField;
+import org.fxtend.autocomplete.SearchMode;
 
 import java.util.List;
 
@@ -14,13 +16,36 @@ public class AutoCompleteFieldDemo extends Application
     @Override
     public void start(Stage stage)
     {
-        VBox root = new VBox();
-        AutoCompleteField autoCompleteTextField = new AutoCompleteField(buildSuggestions());
-        autoCompleteTextField.setPrefWidth(300);
-        autoCompleteTextField.setMaxWidth(300);
-
-        root.getChildren().add(autoCompleteTextField);
+        GridPane root = new GridPane();
+        root.setHgap(15);
+        root.setVgap(15);
         root.setAlignment(Pos.CENTER);
+
+        final Label containsLabel = new Label("Contains Field");
+        root.add(containsLabel, 0, 0);
+
+        AutoCompleteField autoCompleteFieldContains = new AutoCompleteField(buildSuggestions(), SearchMode.CONTAINS);
+        autoCompleteFieldContains.setPrefWidth(300);
+        autoCompleteFieldContains.setMaxWidth(300);
+        root.add(autoCompleteFieldContains, 1, 0);
+
+
+        final Label startWithLabel = new Label("Start with Field");
+        root.add(startWithLabel, 0, 1);
+
+        AutoCompleteField autoCompleteFieldStartWith = new AutoCompleteField(buildSuggestions(), SearchMode.STARTS_WITH);
+        autoCompleteFieldStartWith.setPrefWidth(300);
+        autoCompleteFieldStartWith.setMaxWidth(300);
+        root.add(autoCompleteFieldStartWith, 1, 1);
+
+        final Label endWithLabel = new Label("End with Field");
+        root.add(endWithLabel, 0, 2);
+
+        AutoCompleteField autoCompleteFieldEndWith = new AutoCompleteField(buildSuggestions(), SearchMode.ENDS_WITH);
+        autoCompleteFieldEndWith.setPrefWidth(300);
+        autoCompleteFieldEndWith.setMaxWidth(300);
+        root.add(autoCompleteFieldEndWith, 1, 2);
+
         stage.setScene(new Scene(root, 500, 500));
         stage.setTitle("AutoComplete TextField Demo");
         stage.show();

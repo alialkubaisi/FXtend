@@ -20,11 +20,13 @@ import java.util.stream.Collectors;
 public class AutoCompleteField extends TextField
 {
     private final static double DEFAULT_ROW_HEIGHT = 28d;
+    private final static int DEFAULT_VISIBLE_ROW = 6;
     private final Set<String> suggestions = new HashSet<>();
     private final PopOver suggestionsPopup = new PopOver();
     private final ListView<String> suggestionListView = new ListView<>();
     private final ObservableList<String> suggestionListItems = FXCollections.observableArrayList();
-    private final DoubleProperty visibleRowCount = new SimpleDoubleProperty(6);
+    private final DoubleProperty visibleRowCount = new SimpleDoubleProperty();
+    private final SearchMode searchMode;
 
     private final ChangeListener<String> selectSuggestionListener = (observableValue, s, selectedSuggestion) -> {
         if (selectedSuggestion != null && !selectedSuggestion.isEmpty())
@@ -35,19 +37,26 @@ public class AutoCompleteField extends TextField
 
     public AutoCompleteField(Collection<? extends String> suggestions)
     {
+        this(suggestions, SearchMode.CONTAINS, DEFAULT_VISIBLE_ROW);
+    }
+
+    public AutoCompleteField(Collection<? extends String> suggestions, SearchMode searchMode)
+    {
+        this(suggestions, searchMode, DEFAULT_VISIBLE_ROW);
+    }
+
+    public AutoCompleteField(Collection<? extends String> suggestions, SearchMode searchMode, int visibleRowCount)
+    {
         super();
         this.suggestions.addAll(suggestions);
+        this.searchMode = searchMode;
+        this.visibleRowCount.set(visibleRowCount);
+
         this.getStylesheets().add(Objects.requireNonNull(getClass().getResource(EPath.AUTO_COMPLETE_FIELD_STYLE.getPath())).toExternalForm());
         suggestionListView.getStyleClass().add("auto-complete-list-view");
         initListView();
         initPopup();
         textPropertyHandler();
-    }
-
-    public AutoCompleteField(Collection<? extends String> suggestions, int visibleRowCount)
-    {
-        this(suggestions);
-        this.visibleRowCount.set(visibleRowCount);
     }
 
     private void onSelectionChange(String selectedSuggestion)
@@ -93,7 +102,15 @@ public class AutoCompleteField extends TextField
             {
                 String lowerText = newText.toLowerCase();
                 Set<String> searchResult = suggestions.parallelStream()
-                        .filter(item -> item.toLowerCase().contains(lowerText))
+                        .filter(item -> {
+                            String lowerItem = item.toLowerCase();
+                            return switch (searchMode)
+                            {
+                                case CONTAINS -> lowerItem.contains(lowerText);
+                                case STARTS_WITH -> lowerItem.startsWith(lowerText);
+                                case ENDS_WITH -> lowerItem.endsWith(lowerText);
+                            };
+                        })
                         .collect(Collectors.toSet());
 
                 if (!searchResult.isEmpty())
