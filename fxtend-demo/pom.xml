@@ -44,7 +44,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.alialkubaisi</groupId>
+            <groupId>io.github.alialkubaisi</groupId>
             <artifactId>fxtend</artifactId>
             <version>1.0.0</version>
         </dependency>
@@ -70,19 +70,6 @@
                         <id>attach-sources</id>
                         <goals>
                             <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.8.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
