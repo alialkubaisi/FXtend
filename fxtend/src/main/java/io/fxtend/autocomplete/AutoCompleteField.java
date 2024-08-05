@@ -1,4 +1,4 @@
-package org.fxtend.autocomplete;
+package io.fxtend.autocomplete;
 
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
@@ -9,7 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Bounds;
 import javafx.scene.control.*;
 import org.controlsfx.control.PopOver;
-import org.fxtend.util.EPath;
+import io.fxtend.util.EPath;
 
 import java.util.*;
 import java.util.stream.Collectors;

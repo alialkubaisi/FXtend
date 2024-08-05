@@ -1,4 +1,4 @@
-package org.fxtend.demo;
+package io.fxtend.demo;
 
 public enum DemoPath
 {

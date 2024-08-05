@@ -22,7 +22,7 @@ FXtend can be included in your JavaFX project as a dependency using Maven or Gra
 ```xml
 
 <dependency>
-    <groupId>com.github.alialkubaisi</groupId>
+    <groupId>io.github.alialkubaisi</groupId>
     <artifactId>fxtend</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -31,7 +31,7 @@ FXtend can be included in your JavaFX project as a dependency using Maven or Gra
 ### Gradle
 
 ```
-implementation 'com.github.alialkubaisi:fxtend:1.0.0'
+implementation 'io.github.alialkubaisi:fxtend:1.0.0'
 ```
 
 ## Controls

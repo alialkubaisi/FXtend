@@ -1,4 +1,4 @@
-package org.fxtend.util;
+package io.fxtend.util;
 
 import javafx.application.Platform;
 import javafx.scene.control.Label;

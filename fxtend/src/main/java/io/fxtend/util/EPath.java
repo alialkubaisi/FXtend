@@ -1,4 +1,4 @@
-package org.fxtend.util;
+package io.fxtend.util;
 
 public enum EPath
 {

@@ -1,4 +1,4 @@
-package org.fxtend.demo;
+package io.fxtend.demo;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -6,8 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import org.fxtend.autocomplete.AutoCompleteField;
-import org.fxtend.autocomplete.SearchMode;
+import io.fxtend.autocomplete.AutoCompleteField;
+import io.fxtend.autocomplete.SearchMode;
 
 import java.util.List;
 import java.util.Objects;

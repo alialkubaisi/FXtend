@@ -1,4 +1,4 @@
-package org.fxtend.autocomplete;
+package io.fxtend.autocomplete;
 
 public enum SearchMode
 {

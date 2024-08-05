@@ -1,11 +1,11 @@
-package org.fxtend.demo;
+package io.fxtend.demo;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import org.fxtend.password.SecurePasswordField;
+import io.fxtend.password.SecurePasswordField;
 import javafx.stage.Stage;
 
 import java.util.Objects;

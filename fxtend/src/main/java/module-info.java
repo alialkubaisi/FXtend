@@ -1,5 +1,5 @@
 module fxtend {
-    exports org.fxtend.password;
+    exports io.fxtend.password;
     requires transitive javafx.controls;
     requires javafx.fxml;
     requires org.controlsfx.controls;
@@ -7,6 +7,6 @@ module fxtend {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.ikonli.core;
 
-    opens org.fxtend.password to javafx.fxml;
-    exports org.fxtend.autocomplete;
+    opens io.fxtend.password to javafx.fxml;
+    exports io.fxtend.autocomplete;
 }

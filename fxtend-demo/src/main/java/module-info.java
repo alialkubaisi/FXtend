@@ -1,5 +1,5 @@
 module fxtend.demo {
     requires fxtend;
 
-    exports org.fxtend.demo to javafx.graphics;
+    exports io.fxtend.demo to javafx.graphics;
 }

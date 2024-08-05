@@ -1,4 +1,4 @@
-package org.fxtend.password;
+package io.fxtend.password;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -8,7 +8,7 @@ public class I18NPasswordField
     public static ResourceBundle getResourceBundle(String language)
     {
         Locale loc = Locale.of(language);
-        String baseName = "org.fxtend.password.password-field";
+        String baseName = "io.fxtend.password.password-field";
 
         return ResourceBundle.getBundle(baseName, loc);
     }

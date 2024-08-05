@@ -1,4 +1,4 @@
-package org.fxtend.password;
+package io.fxtend.password;
 
 import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
@@ -14,8 +14,8 @@ import javafx.util.Duration;
 import org.controlsfx.control.PopOver;
 import org.controlsfx.control.textfield.CustomPasswordField;
 import org.controlsfx.control.textfield.CustomTextField;
-import org.fxtend.util.EPath;
-import org.fxtend.util.ProjectUtil;
+import io.fxtend.util.EPath;
+import io.fxtend.util.ProjectUtil;
 import org.kordamp.ikonli.materialdesign2.MaterialDesignE;
 
 import java.io.IOException;

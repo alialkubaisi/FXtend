@@ -1,4 +1,4 @@
-package org.fxtend.password;
+package io.fxtend.password;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

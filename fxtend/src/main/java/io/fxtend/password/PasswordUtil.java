@@ -1,4 +1,4 @@
-package org.fxtend.password;
+package io.fxtend.password;
 
 public class PasswordUtil
 {
