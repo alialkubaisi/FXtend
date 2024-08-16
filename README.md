@@ -1,7 +1,7 @@
 # FXtend - Extending JavaFX Controls
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.alialkubaisi/fxtend.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.alialkubaisi/fxtend/1.0.0)
 ![Java Version](https://img.shields.io/badge/Java-%3E%3D%2017-blue)
-![JavaFX Version](https://img.shields.io/badge/JavaFX-%3E%3D%2017-blue)
+![JavaFX Version](https://img.shields.io/badge/JavaFX-%2022-blue)
 ![License](https://img.shields.io/badge/License-Apache%202.0-green)
 
 FXtend is an open-source JavaFX library that aims to provide additional, new, or improved controls for JavaFX

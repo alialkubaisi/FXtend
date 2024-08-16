@@ -7,7 +7,7 @@ public class I18NPasswordField
 {
     public static ResourceBundle getResourceBundle(String language)
     {
-        Locale loc = Locale.of(language);
+        Locale loc = new Locale(language);
         String baseName = "io.fxtend.password.password-field";
 
         return ResourceBundle.getBundle(baseName, loc);
