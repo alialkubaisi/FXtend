@@ -1,0 +1,43 @@
+.header {
+    -fx-background-color: #674AEE;
+}
+
+.title {
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-font-size: 30;
+}
+
+.label-receiver {
+    -fx-background-color: #674AEE;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-padding: 4;
+    -fx-font-size: 18px;
+}
+
+.label-receiver > .textflow > Text {
+    -fx-fill: white;
+}
+
+.label-sender{
+    -fx-background-color: lightskyblue;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-padding: 4;
+    -fx-font-size: 18px;
+}
+
+.send-button {
+    -fx-background-color: transparent;
+    -fx-content-display: graphic-only;
+}
+
+.send-button .ikonli-font-icon {
+    -fx-icon-code: mdi2s-send;
+    -fx-icon-color: #674AEE;
+    -fx-icon-size: 24;
+}
