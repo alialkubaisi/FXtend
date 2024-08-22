@@ -15,6 +15,7 @@ public class MessageView extends ScrollPane
         messageViewContent = new VBox();
         messageViewContent.setSpacing(15);
         messageViewContent.prefWidthProperty().bind(widthProperty());
+        messageViewContent.getStyleClass().add("message-view-content");
 
         setContent(messageViewContent);
         vvalueProperty().bind(messageViewContent.heightProperty());
@@ -24,11 +25,13 @@ public class MessageView extends ScrollPane
     {
         SendLabel sendLabel = new SendLabel(message);
         messageViewContent.getChildren().add(sendLabel);
+        sendLabel.resizeMessageContainer(messageViewContent);
     }
 
     public void receiveMessage(String message)
     {
         ReceiveLabel receiveLabel = new ReceiveLabel(message);
         messageViewContent.getChildren().add(receiveLabel);
+        receiveLabel.resizeMessageContainer(messageViewContent);
     }
 }

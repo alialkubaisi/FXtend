@@ -1,28 +1,26 @@
 package io.fxtend.chatview;
 
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 
-public class ReceiveLabel extends HBox
+public class ReceiveLabel extends HBox implements MessageLabel
 {
+    private final Label receiveLabel = new Label();
+
     public ReceiveLabel(String responseText)
     {
-        Text responseItem = new Text(responseText);
+        receiveLabel.setText(responseText);
+        receiveLabel.setWrapText(true);
+        receiveLabel.getStyleClass().add("label-receiver");
 
-        TextFlow resonseTextFlow = new TextFlow(responseItem);
-        resonseTextFlow.setMinWidth(50);
-
-        resonseTextFlow.widthProperty().addListener((observable, oldValue, newValue) -> {
-            double width = newValue.doubleValue();
-            setPrefWidth(width);
-            setMaxWidth(width);
-        });
-
-
-        getStyleClass().add("label-receiver");
         setAlignment(Pos.CENTER_LEFT);
-        getChildren().add(resonseTextFlow);
+        getChildren().add(receiveLabel);
+    }
+
+    @Override
+    public Label getMessageLabel()
+    {
+        return receiveLabel;
     }
 }

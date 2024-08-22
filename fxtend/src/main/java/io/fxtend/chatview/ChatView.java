@@ -21,6 +21,7 @@ public class ChatView extends BorderPane
     public ChatView(String title)
     {
         getStylesheets().add(Objects.requireNonNull(ChatView.class.getResource(EPath.CHAT_VIEW_STYLE.getPath())).toExternalForm());
+        getStyleClass().add("chat-view");
         createTitleHeader(title);
         createMessageView();
         createInputArea();
@@ -65,7 +66,7 @@ public class ChatView extends BorderPane
         buttonSend.setGraphic(new FontIcon());
         buttonSend.setOnAction(actionEvent -> {
             sendMessage(inputTextField.getText());
-            receiveMessage("Received: " + inputTextField.getText());
+            receiveMessage("Received");
         });
 
         inputArea.getChildren().addAll(inputTextField, buttonSend);
