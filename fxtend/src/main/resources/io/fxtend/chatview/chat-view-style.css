@@ -25,12 +25,14 @@
 }
 
 .chat-view .scroll-bar:vertical {
+    -fx-background-color: transparent;
     -fx-background-radius: 2.0em;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 }
 
 .chat-view .scroll-bar:horizontal {
+    -fx-background-color: transparent;
     -fx-background-radius: 2.0em;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
@@ -100,9 +102,25 @@
     -fx-font-size: 18px;
 }
 
+/* chat view input area style */
+.input-area {
+    -fx-pref-height: 50;
+    -fx-spacing: 5;
+    -fx-padding: 5;
+    -fx-alignment: center-right;
+}
+
+.input-area > .text-field {
+    -fx-alignment: center-left;
+}
+
 .send-button {
     -fx-background-color: transparent;
     -fx-content-display: graphic-only;
+    -fx-min-width: 24;
+    -fx-max-width: 24;
+    -fx-min-height: 24;
+    -fx-max-height: 24;
 }
 
 .send-button .ikonli-font-icon {

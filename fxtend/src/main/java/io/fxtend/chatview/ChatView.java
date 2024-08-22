@@ -53,30 +53,36 @@ public class ChatView extends BorderPane
     private void createInputArea()
     {
         HBox inputArea = new HBox();
-        inputArea.setAlignment(javafx.geometry.Pos.CENTER_RIGHT);
-        inputArea.setPrefHeight(50);
-        inputArea.setSpacing(15);
+        inputArea.getStyleClass().add("input-area");
 
         inputTextField = new TextField();
-        inputTextField.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+        inputTextField.setOnAction(actionEvent -> handleSendMessage());
         HBox.setHgrow(inputTextField, Priority.ALWAYS);
 
         Button buttonSend = new Button();
         buttonSend.getStyleClass().add("send-button");
         buttonSend.setGraphic(new FontIcon());
-        buttonSend.setOnAction(actionEvent -> {
-            sendMessage(inputTextField.getText());
-            receiveMessage("Received");
-        });
+        buttonSend.setOnAction(actionEvent -> handleSendMessage());
 
         inputArea.getChildren().addAll(inputTextField, buttonSend);
         this.setBottom(inputArea);
+    }
+
+    private void handleSendMessage()
+    {
+        final String inputText = inputTextField.getText();
+        if (!inputText.isEmpty())
+        {
+            sendMessage(inputText);
+            receiveMessage("Received");
+        }
     }
 
     public void sendMessage(String message)
     {
         messageView.sendMessage(message);
         inputTextField.clear();
+        inputTextField.requestFocus();
     }
 
     public void receiveMessage(String message)

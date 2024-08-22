@@ -10,6 +10,8 @@ public class MessageView extends ScrollPane
     public MessageView()
     {
         setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
+        setFitToWidth(true);
         setMaxHeight(Double.MAX_VALUE);
 
         messageViewContent = new VBox();
@@ -17,8 +19,8 @@ public class MessageView extends ScrollPane
         messageViewContent.prefWidthProperty().bind(widthProperty());
         messageViewContent.getStyleClass().add("message-view-content");
 
-        setContent(messageViewContent);
         vvalueProperty().bind(messageViewContent.heightProperty());
+        setContent(messageViewContent);
     }
 
     public void sendMessage(String message)
