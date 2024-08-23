@@ -102,6 +102,24 @@
     -fx-padding: 5 0 0 10;
 }
 
+.status-icon-default {
+    -fx-icon-color: #666;
+    -fx-icon-size: 15;
+}
+
+.status-sent-icon {
+    -fx-icon-code: mdi2c-check;
+}
+
+.status-received-icon {
+    -fx-icon-code: mdi2c-check-all;
+}
+
+.status-read-icon {
+    -fx-icon-code: mdi2c-check-all;
+    -fx-icon-color: #674AEE;
+}
+
 .bubble-receiver {
     -fx-background-color: #674AEE;
     -fx-background-radius: 4;

@@ -11,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 public abstract class MessageBubble extends HBox implements MessageLabel
 {
     private final Label messageLabel = new Label();
+    protected final HBox statusContainer = new HBox();
+    protected Label timestampLabel;
 
     public MessageBubble(String messageText, String labelStyleClass, String timestampStyleClass, String bubbleStyleClass, Pos alignment)
     {
@@ -18,10 +20,13 @@ public abstract class MessageBubble extends HBox implements MessageLabel
         messageLabel.setWrapText(true);
         messageLabel.getStyleClass().add(labelStyleClass);
 
-        Label timestampLabel = new Label(getCurrentTime());
+        timestampLabel = new Label(getCurrentTime());
         timestampLabel.getStyleClass().add(timestampStyleClass);
 
-        VBox bubble = new VBox(messageLabel, timestampLabel);
+        statusContainer.setAlignment(Pos.CENTER_RIGHT);
+        statusContainer.getChildren().addAll(timestampLabel);
+
+        VBox bubble = new VBox(messageLabel, statusContainer);
         bubble.setAlignment(Pos.BOTTOM_RIGHT);
         bubble.getStyleClass().add(bubbleStyleClass);
 
@@ -35,7 +40,7 @@ public abstract class MessageBubble extends HBox implements MessageLabel
         return messageLabel;
     }
 
-    protected String getCurrentTime()
+    private String getCurrentTime()
     {
         LocalTime currentTime = LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
