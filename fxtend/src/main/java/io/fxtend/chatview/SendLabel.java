@@ -33,7 +33,6 @@ public class SendLabel extends MessageBubble
     {
         super(sendText, "label-sender", "timestamp-sender", "bubble-sender", Pos.CENTER_RIGHT);
         statusIcon.getStyleClass().add(STATUS_DEFAULT_STYLE);
-        updateMessageStatus(MessageStatus.READ);
     }
 
     public void updateMessageStatus(MessageStatus status)
