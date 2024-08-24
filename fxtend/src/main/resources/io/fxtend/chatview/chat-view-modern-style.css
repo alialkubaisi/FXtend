@@ -1,0 +1,67 @@
+@import 'chat-view-style.css';
+
+.root {
+    -fx-primary-color: #6200EE;
+    -fx-secondary-color: #03DAC6;
+    -fx-main-color: #FFFFFF;
+    -fx-background-color: -fx-main-color;
+}
+
+.header {
+    -fx-background-color: -fx-primary-color;
+}
+
+.title {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24;
+    -fx-font-weight: 500;
+}
+
+.bubble-sender {
+    -fx-background-color: -fx-secondary-color;
+}
+
+.label-sender {
+    -fx-text-fill: #000000;
+}
+
+.bubble-receiver {
+    -fx-background-color: -fx-primary-color;
+}
+
+.label-receiver {
+    -fx-text-fill: #FFFFFF;
+}
+
+.timestamp-receiver {
+    -fx-text-fill: #CCCCCC;
+}
+
+.input-area {
+    -fx-background-color: #F0F2F5;
+}
+
+.input-area > .text-field {
+    -fx-background-color: #FFFFFF;
+}
+
+.send-button {
+    -fx-background-color: -fx-primary-color;
+}
+
+.send-button:hover {
+    -fx-background-color: #3700B3;
+}
+
+.send-button:pressed {
+    -fx-background-color: #6200EE;
+}
+
+.send-button .ikonli-font-icon {
+    -fx-icon-color: #FFFFFF;
+    -fx-icon-size: 20;
+}
+
+.chat-view .scroll-pane {
+    -fx-background-color: -fx-main-color;
+}

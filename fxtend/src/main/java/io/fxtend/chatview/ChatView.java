@@ -13,14 +13,31 @@ public class ChatView extends BorderPane
     private MessageView messageView;
     private TextField inputTextField;
 
+    public enum Style
+    {
+        DEFAULT,
+        MODERN,
+        DARK
+    }
+
     public ChatView()
     {
-        this(null);
+        this(null, Style.DEFAULT);
     }
 
     public ChatView(String title)
     {
-        getStylesheets().add(Objects.requireNonNull(ChatView.class.getResource(EPath.CHAT_VIEW_STYLE.getPath())).toExternalForm());
+        this(title, Style.DEFAULT);
+    }
+
+    public ChatView(Style style)
+    {
+        this(null, style);
+    }
+
+    public ChatView(String title, Style style)
+    {
+        applyStyle(style);
         getStyleClass().add("chat-view");
         createTitleHeader(title);
         createMessageView();
@@ -89,5 +106,17 @@ public class ChatView extends BorderPane
     {
         messageView.receiveMessage(message);
         inputTextField.clear();
+    }
+
+    public void applyStyle(Style style)
+    {
+        String styleSheet = switch (style)
+        {
+            case MODERN -> EPath.CHAT_VIEW_MODERN_STYLE.getPath();
+            case DARK -> EPath.CHAT_VIEW_DARK_STYLE.getPath();
+            default -> EPath.CHAT_VIEW_DEFAULT_STYLE.getPath();
+        };
+        getStylesheets().clear();
+        getStylesheets().add(Objects.requireNonNull(ChatView.class.getResource(styleSheet)).toExternalForm());
     }
 }

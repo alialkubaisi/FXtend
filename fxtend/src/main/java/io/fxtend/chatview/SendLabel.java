@@ -33,6 +33,7 @@ public class SendLabel extends MessageBubble
     {
         super(sendText, "label-sender", "timestamp-sender", "bubble-sender", Pos.CENTER_RIGHT);
         statusIcon.getStyleClass().add(STATUS_DEFAULT_STYLE);
+        updateMessageStatus(MessageStatus.READ);
     }
 
     public void updateMessageStatus(MessageStatus status)
@@ -40,7 +41,7 @@ public class SendLabel extends MessageBubble
         statusContainer.getChildren().clear();
         statusContainer.getChildren().add(timestampLabel);
         statusContainer.getChildren().add(statusIcon);
-        HBox.setMargin(statusIcon, new Insets(5, 0, 0, 0));
+        HBox.setMargin(statusIcon, new Insets(5, 0, 0, 2));
         statusIcon.getStyleClass().removeIf(sc -> !STATUS_DEFAULT_STYLE.equals(sc));
         statusIcon.getStyleClass().add(status.getCssClass());
     }

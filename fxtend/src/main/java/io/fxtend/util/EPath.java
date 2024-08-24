@@ -10,7 +10,9 @@ public enum EPath
     PASSWORD_FIELD_STYLE("password-field-style.css"),
 
     // chat view
-    CHAT_VIEW_STYLE("chat-view-style.css");
+    CHAT_VIEW_DEFAULT_STYLE("chat-view-default-style.css"),
+    CHAT_VIEW_MODERN_STYLE("chat-view-modern-style.css"),
+    CHAT_VIEW_DARK_STYLE("chat-view-dark-style.css");
 
     private String path;
 
@@ -23,4 +25,4 @@ public enum EPath
     {
         return path;
     }
-    }
+}

@@ -1,25 +1,23 @@
 .root {
-    -fx-primary-color: #4A4A4A;
-    -fx-secondary-color: #A7C7E7;
     -fx-prompt-color: #666;
 }
 
 /* chat view header style */
 .header {
-    -fx-background-color: -fx-primary-color;
+    -fx-shadow-highlight-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0.0, 0, 2);
 }
 
 .title {
-    -fx-text-fill: #FFFFFF;
     -fx-alignment: center;
     -fx-text-alignment: center;
-    -fx-font-size: 28;
+    -fx-padding: 10;
     -fx-font-weight: bold;
 }
 
 /* chat view message container style */
 .message-view-content {
-    -fx-padding: 5.0;
+    -fx-padding: 8.0;
 }
 
 /* chat view scroll pane style */
@@ -92,21 +90,20 @@
     -fx-background-insets: 0.0;
 }
 
-.bubble-sender {
-    -fx-background-color: -fx-secondary-color;
-    -fx-background-radius: 4;
-    -fx-border-radius: 4;
-    -fx-padding: 5;
+.bubble-sender, .bubble-receiver {
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-padding: 8 16;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 2, 0.0, 0, 2);
 }
 
-.label-sender {
-    -fx-font-size: 18px;
+.label-sender, .label-receiver {
+    -fx-font-size: 16px;
 }
 
-.timestamp-sender {
+.timestamp-sender, .timestamp-receiver {
     -fx-font-size: 12px;
-    -fx-text-fill: -fx-prompt-color;
-    -fx-padding: 5 0 0 10;
+    -fx-padding: 2 0 0 10;
     -fx-alignment: bottom-right;
 }
 
@@ -128,25 +125,6 @@
     -fx-icon-color: #674AEE;
 }
 
-.bubble-receiver {
-    -fx-background-color: -fx-primary-color;
-    -fx-background-radius: 4;
-    -fx-border-radius: 4;
-    -fx-padding: 5;
-}
-
-.label-receiver {
-    -fx-font-size: 16px;
-    -fx-text-fill: #FFFFFF;
-}
-
-.timestamp-receiver {
-    -fx-font-size: 10px;
-    -fx-text-fill: #CCCCCC;
-    -fx-padding: 5 0 0 10;
-    -fx-alignment: bottom-right;
-}
-
 /* chat view input area style */
 .input-area {
     -fx-pref-height: 50;
@@ -160,28 +138,11 @@
 }
 
 .send-button {
-    -fx-background-color: transparent;
-    -fx-content-display: graphic-only;
-    -fx-min-width: 24;
-    -fx-max-width: 24;
-    -fx-min-height: 24;
-    -fx-max-height: 24;
-}
-
-.send-button:hover {
+    -fx-background-radius: 18;
     -fx-cursor: hand;
-    -fx-effect: innershadow(gaussian, -fx-primary-color, 10, 0.5, 0, 0);
-    -fx-scale-x: 1.2;
-    -fx-scale-y: 1.2;
-}
-
-.send-button:pressed {
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 4, 0.0, 0, 2);
 }
 
 .send-button .ikonli-font-icon {
     -fx-icon-code: mdi2s-send;
-    -fx-icon-color: -fx-primary-color;
-    -fx-icon-size: 24;
 }
