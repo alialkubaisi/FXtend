@@ -2,7 +2,6 @@ package io.fxtend.chatview;
 
 import javafx.application.Platform;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.VBox;
 
 public class MessageView extends ScrollPane
@@ -22,17 +21,6 @@ public class MessageView extends ScrollPane
         messageViewContent.getStyleClass().add("message-view-content");
 
         setContent(messageViewContent);
-
-        // Enable mouse wheel and swipe scrolling
-        addEventFilter(ScrollEvent.SCROLL, event -> {
-            if (event.getDeltaY() != 0)
-            {
-                double delta = event.getDeltaY();
-                double newVValue = getVvalue() - delta / getContent().getBoundsInLocal().getHeight();
-                setVvalue(newVValue);
-                event.consume();
-            }
-        });
     }
 
     public void sendMessage(String message)
