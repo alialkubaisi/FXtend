@@ -8,11 +8,13 @@ import javafx.scene.layout.*;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class ChatView extends BorderPane
 {
     private MessageView messageView;
     private TextField inputTextField;
+    private Consumer<String> onSendMessage;
 
     public enum Style
     {
@@ -45,7 +47,7 @@ public class ChatView extends BorderPane
         createInputArea();
     }
 
-    private void createTitleHeader(String title)
+    public void createTitleHeader(String title)
     {
         if (title != null && !title.isEmpty())
         {
@@ -74,32 +76,37 @@ public class ChatView extends BorderPane
         inputArea.getStyleClass().add("input-area");
 
         inputTextField = new TextField();
-        inputTextField.setOnAction(actionEvent -> handleSendMessage());
+        inputTextField.setOnAction(actionEvent -> handleSendAction());
         HBox.setHgrow(inputTextField, Priority.ALWAYS);
 
         Button buttonSend = new Button();
         buttonSend.getStyleClass().add("send-button");
         buttonSend.setGraphic(new FontIcon());
-        buttonSend.setOnAction(actionEvent -> handleSendMessage());
+        buttonSend.setOnAction(actionEvent -> handleSendAction());
 
         inputArea.getChildren().addAll(inputTextField, buttonSend);
         this.setBottom(inputArea);
     }
 
-    private void handleSendMessage()
+    private void handleSendAction()
     {
-        final String inputText = inputTextField.getText();
-        if (!inputText.isEmpty())
+        String message = inputTextField.getText();
+        if (!message.isEmpty())
         {
-            sendMessage(inputText);
+            sendMessage(message);
+            inputTextField.clear();
+            inputTextField.requestFocus();
+
+            if (onSendMessage != null)
+            {
+                onSendMessage.accept(message);
+            }
         }
     }
 
     public void sendMessage(String message)
     {
         messageView.sendMessage(message);
-        inputTextField.clear();
-        inputTextField.requestFocus();
     }
 
     public void receiveMessage(String message)
@@ -122,6 +129,11 @@ public class ChatView extends BorderPane
         };
         getStylesheets().clear();
         getStylesheets().add(Objects.requireNonNull(ChatView.class.getResource(styleSheet)).toExternalForm());
+    }
+
+    public void setOnSendMessage(Consumer<String> handler)
+    {
+        this.onSendMessage = handler;
     }
 
     public TextField getInputTextField()
