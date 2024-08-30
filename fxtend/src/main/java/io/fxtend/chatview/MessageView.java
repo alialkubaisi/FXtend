@@ -2,6 +2,7 @@ package io.fxtend.chatview;
 
 import javafx.application.Platform;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 
 public class MessageView extends ScrollPane
@@ -33,7 +34,16 @@ public class MessageView extends ScrollPane
 
     public void receiveMessage(String message)
     {
+        receiveMessage(message, null);
+    }
+
+    public void receiveMessage(String message, Image logo)
+    {
         ReceiveLabel receiveLabel = new ReceiveLabel(message);
+        if (logo != null)
+        {
+            receiveLabel.initLogoImage(logo);
+        }
         messageViewContent.getChildren().add(receiveLabel);
         receiveLabel.resizeMessageContainer(messageViewContent);
         scrollToBottom();

@@ -3,15 +3,18 @@ package io.fxtend.chatview;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public abstract class MessageBubble extends HBox implements MessageLabel
+public abstract class MessageBubble extends HBox
 {
+    private final static double LABEL_WIDTH_RATIO = 0.8;
     private final Label messageLabel = new Label();
     protected final HBox statusContainer = new HBox();
+    private final VBox bubble = new VBox(messageLabel, statusContainer);
     protected Label timestampLabel;
 
     public MessageBubble(String messageText, String labelStyleClass, String timestampStyleClass, String bubbleStyleClass, Pos alignment)
@@ -26,7 +29,6 @@ public abstract class MessageBubble extends HBox implements MessageLabel
         statusContainer.setAlignment(Pos.CENTER_RIGHT);
         statusContainer.getChildren().addAll(timestampLabel);
 
-        VBox bubble = new VBox(messageLabel, statusContainer);
         bubble.setAlignment(Pos.BOTTOM_RIGHT);
         bubble.getStyleClass().add(bubbleStyleClass);
 
@@ -34,10 +36,17 @@ public abstract class MessageBubble extends HBox implements MessageLabel
         getChildren().add(bubble);
     }
 
-    @Override
-    public Label getMessageLabel()
+    protected void resizeMessageContainer(Pane parentPane)
     {
-        return messageLabel;
+        Label messageLabel = getMessageLabel();
+        messageLabel.setMaxWidth(parentPane.getWidth() * LABEL_WIDTH_RATIO);
+        parentPane.widthProperty().addListener((observableValue, oldWidth, newWidth) -> {
+            double newWidthValue = newWidth.doubleValue();
+            if (newWidthValue > 0)
+            {
+                messageLabel.setMaxWidth(newWidth.doubleValue() * LABEL_WIDTH_RATIO);
+            }
+        });
     }
 
     private String getCurrentTime()
@@ -45,5 +54,15 @@ public abstract class MessageBubble extends HBox implements MessageLabel
         LocalTime currentTime = LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         return currentTime.format(formatter);
+    }
+
+    public Label getMessageLabel()
+    {
+        return messageLabel;
+    }
+
+    public VBox getBubble()
+    {
+        return bubble;
     }
 }

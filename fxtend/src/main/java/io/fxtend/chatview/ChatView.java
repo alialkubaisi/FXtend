@@ -3,6 +3,7 @@ package io.fxtend.chatview;
 import io.fxtend.util.EPath;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import org.kordamp.ikonli.javafx.FontIcon;
 
@@ -91,7 +92,6 @@ public class ChatView extends BorderPane
         if (!inputText.isEmpty())
         {
             sendMessage(inputText);
-            receiveMessage("Received");
         }
     }
 
@@ -104,8 +104,12 @@ public class ChatView extends BorderPane
 
     public void receiveMessage(String message)
     {
-        messageView.receiveMessage(message);
-        inputTextField.clear();
+        receiveMessage(message, null);
+    }
+
+    public void receiveMessage(String message, Image logoImage)
+    {
+        messageView.receiveMessage(message, logoImage);
     }
 
     public void applyStyle(Style style)
@@ -118,5 +122,10 @@ public class ChatView extends BorderPane
         };
         getStylesheets().clear();
         getStylesheets().add(Objects.requireNonNull(ChatView.class.getResource(styleSheet)).toExternalForm());
+    }
+
+    public TextField getInputTextField()
+    {
+        return inputTextField;
     }
 }

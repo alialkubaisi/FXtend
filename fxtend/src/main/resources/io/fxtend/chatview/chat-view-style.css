@@ -91,10 +91,9 @@
 }
 
 .bubble-sender, .bubble-receiver {
-    -fx-background-radius: 16;
-    -fx-border-radius: 16;
-    -fx-padding: 8 16;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 2, 0.0, 0, 2);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 8;
 }
 
 .label-sender, .label-receiver {
@@ -105,6 +104,11 @@
     -fx-font-size: 12px;
     -fx-padding: 2 0 0 10;
     -fx-alignment: bottom-right;
+}
+
+.bubble-receiver-with-logo {
+    -fx-background-radius: 0 10 10 10;
+    -fx-border-radius: 0 10 10 10;
 }
 
 .status-icon-default {
