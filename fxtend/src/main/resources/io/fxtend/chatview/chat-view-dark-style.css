@@ -1,9 +1,12 @@
 @import 'chat-view-style.css';
 
-.root {
+* {
     -fx-primary-color: #BB86FC;
     -fx-secondary-color: #03DAC6;
     -fx-main-color: #1E1E1E;
+}
+
+.root {
     -fx-background-color: -fx-main-color;
 }
 
@@ -16,6 +19,11 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 24;
     -fx-font-weight: 500;
+}
+
+.chat-view .scroll-bar:vertical .thumb,
+.chat-view .scroll-bar:horizontal .thumb {
+    -fx-background-color: -fx-primary-color;
 }
 
 .message-view-content {
@@ -32,7 +40,7 @@
 }
 
 .timestamp-sender {
-    -fx-text-fill: #B3B3B3;
+    -fx-text-fill: #918f8f;
 }
 
 .bubble-receiver {
@@ -44,7 +52,7 @@
 }
 
 .timestamp-receiver {
-    -fx-text-fill: #BBBBBB;
+    -fx-text-fill: #918f8f;
 }
 
 /* Dark background for input area */

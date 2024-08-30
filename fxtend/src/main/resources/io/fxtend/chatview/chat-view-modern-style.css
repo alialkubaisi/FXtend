@@ -1,9 +1,12 @@
 @import 'chat-view-style.css';
 
-.root {
+* {
     -fx-primary-color: #6200EE;
     -fx-secondary-color: #03DAC6;
     -fx-main-color: #FFFFFF;
+}
+
+.root {
     -fx-background-color: -fx-main-color;
 }
 
@@ -15,6 +18,11 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 24;
     -fx-font-weight: 500;
+}
+
+.chat-view .scroll-bar:vertical .thumb,
+.chat-view .scroll-bar:horizontal .thumb {
+    -fx-background-color: -fx-primary-color;
 }
 
 .bubble-sender {
