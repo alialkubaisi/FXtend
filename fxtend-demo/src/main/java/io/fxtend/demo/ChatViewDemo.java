@@ -35,6 +35,8 @@ public class ChatViewDemo extends Application
         chatView1.setStyle(borderStyle);
         chatView2.setStyle(borderStyle);
 
+        chatView1.prefWidthProperty().bind(chatView2.widthProperty());
+
         chatView1.setOnSendMessage(message -> sendMessage(chatView2, message, imageCheckBox.isSelected()));
         chatView2.setOnSendMessage(message -> sendMessage(chatView1, message, imageCheckBox.isSelected()));
 
@@ -77,6 +79,7 @@ public class ChatViewDemo extends Application
         chatView2.receiveMessage("Thanks! I'll share it with you once it's done.");
 
         chatView1.updateLastMessagesStatus(SendLabel.MessageStatus.READ);
+        chatView2.updateLastMessagesStatus(SendLabel.MessageStatus.READ);
     }
 
     private GridPane getOptionPane()
