@@ -9,6 +9,7 @@ public class SendLabel extends MessageBubble
 {
     private final static String STATUS_DEFAULT_STYLE = "status-icon-default";
     private final FontIcon statusIcon = new FontIcon();
+    private MessageStatus messageStatus;
 
     public enum MessageStatus
     {
@@ -43,5 +44,11 @@ public class SendLabel extends MessageBubble
         HBox.setMargin(statusIcon, new Insets(5, 0, 0, 2));
         statusIcon.getStyleClass().removeIf(sc -> !STATUS_DEFAULT_STYLE.equals(sc));
         statusIcon.getStyleClass().add(status.getCssClass());
+        messageStatus = status;
+    }
+
+    public MessageStatus getMessageStatus()
+    {
+        return messageStatus;
     }
 }

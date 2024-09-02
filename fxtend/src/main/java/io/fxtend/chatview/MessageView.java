@@ -5,9 +5,13 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class MessageView extends ScrollPane
 {
     private final VBox messageViewContent;
+    private final Set<SendLabel> lastMessages = new HashSet<>();
 
     public MessageView()
     {
@@ -30,6 +34,7 @@ public class MessageView extends ScrollPane
         messageViewContent.getChildren().add(sendLabel);
         sendLabel.resizeMessageContainer(messageViewContent);
         scrollToBottom();
+        lastMessages.add(sendLabel);
     }
 
     public void receiveMessage(String message)
@@ -52,5 +57,26 @@ public class MessageView extends ScrollPane
     private void scrollToBottom()
     {
         Platform.runLater(() -> setVvalue(1.0));
+    }
+
+    public void updateLastMessagesStatus(SendLabel.MessageStatus messageStatus)
+    {
+        if (SendLabel.MessageStatus.SENT.equals(messageStatus))
+        {
+            lastMessages.forEach(sendLabel -> sendLabel.updateMessageStatus(messageStatus));
+        }
+        else if (SendLabel.MessageStatus.RECEIVED.equals(messageStatus))
+        {
+            lastMessages.stream()
+                    .filter(sendLabel -> sendLabel.getMessageStatus() == null || SendLabel.MessageStatus.SENT.equals(sendLabel.getMessageStatus()))
+                    .forEach(sendLabel -> sendLabel.updateMessageStatus(messageStatus));
+        }
+        else if (SendLabel.MessageStatus.READ.equals(messageStatus))
+        {
+            lastMessages.stream()
+                    .filter(sendLabel -> sendLabel.getMessageStatus() == null || SendLabel.MessageStatus.RECEIVED.equals(
+                            sendLabel.getMessageStatus()))
+                    .forEach(sendLabel -> sendLabel.updateMessageStatus(messageStatus));
+        }
     }
 }

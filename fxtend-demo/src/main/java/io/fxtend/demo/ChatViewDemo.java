@@ -1,6 +1,7 @@
 package io.fxtend.demo;
 
 import io.fxtend.chatview.ChatView;
+import io.fxtend.chatview.SendLabel;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -28,6 +29,8 @@ public class ChatViewDemo extends Application
         chatView1 = new ChatView();
         chatView2 = new ChatView();
 
+        addDemoMessages();
+
         String borderStyle = "-fx-border-color: black;";
         chatView1.setStyle(borderStyle);
         chatView2.setStyle(borderStyle);
@@ -47,6 +50,33 @@ public class ChatViewDemo extends Application
         primaryStage.setTitle("ChatView Demo");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
+    }
+
+    private void addDemoMessages()
+    {
+        chatView1.sendMessage("Hello! How are you doing today?");
+
+        chatView2.receiveMessage("Hello! How are you doing today?");
+        chatView2.sendMessage("I'm doing well, thank you! How about you?");
+
+        chatView1.receiveMessage("I'm doing well, thank you! How about you?");
+
+        chatView1.sendMessage("I'm great, just working on a new project.");
+        chatView2.receiveMessage("I'm great, just working on a new project.");
+
+        chatView2.sendMessage("That sounds interesting! What are you working on?");
+        chatView1.receiveMessage("That sounds interesting! What are you working on?", logoImage);
+
+        chatView1.sendMessage("I'm creating a new chat interface for my app using JavaFX!");
+        chatView2.receiveMessage("I'm creating a new chat interface for my app using JavaFX!");
+
+        chatView2.sendMessage("That's awesome! 😃 I can't wait to see it in action.");
+        chatView1.receiveMessage("That's awesome! 😃 I can't wait to see it in action.");
+
+        chatView1.sendMessage("Thanks! I'll share it with you once it's done.");
+        chatView2.receiveMessage("Thanks! I'll share it with you once it's done.");
+
+        chatView1.updateLastMessagesStatus(SendLabel.MessageStatus.READ);
     }
 
     private GridPane getOptionPane()

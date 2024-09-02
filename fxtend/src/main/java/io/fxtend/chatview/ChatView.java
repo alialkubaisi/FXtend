@@ -131,6 +131,11 @@ public class ChatView extends BorderPane
         getStylesheets().add(Objects.requireNonNull(ChatView.class.getResource(styleSheet)).toExternalForm());
     }
 
+    public void updateLastMessagesStatus(SendLabel.MessageStatus status)
+    {
+        messageView.updateLastMessagesStatus(status);
+    }
+
     public void setOnSendMessage(Consumer<String> handler)
     {
         this.onSendMessage = handler;
