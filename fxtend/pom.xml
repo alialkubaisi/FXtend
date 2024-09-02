@@ -7,13 +7,13 @@
     <parent>
         <groupId>io.github.alialkubaisi</groupId>
         <artifactId>fxtend-parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>fxtend</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>FXtend</name>
     <description>FXtend is an open-source JavaFX library that aims to provide additional, new, or improved controls for JavaFX
