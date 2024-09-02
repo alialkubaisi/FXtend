@@ -19,7 +19,7 @@ jobs:
         with:
           java-version: 17
           distribution: 'zulu'
-          server-id: central
+          server-id: ossrh
           server-username: OSSRH_USERNAME
           server-password: OSSRH_PASSWORD
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
@@ -32,16 +32,18 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+      - name: 'Import GPG key'
+        run: |
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
+
       - name: 'Release to Maven Central'
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_PASSWORD }}
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         run: |
           export GPG_TTY=$(tty)
-          mvn --no-transfer-progress -B \
-            -Drepository.url=https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git \
-            -Dmaven.site.skip=true -Drelease=true deploy
+          mvn --batch-mode --no-transfer-progress -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} clean deploy
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
