@@ -39,7 +39,6 @@ jobs:
           mvn clean deploy -P snapshot
 
       - name: Deploy Release to Maven Central
-        if: startsWith(github.ref, 'refs/tags/v')
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
@@ -51,7 +50,6 @@ jobs:
           mvn clean deploy -P release
 
       - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref_name }}
