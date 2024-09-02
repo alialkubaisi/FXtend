@@ -1,0 +1,136 @@
+* {
+    -fx-prompt-color: #666;
+}
+
+/* chat view header style */
+.header {
+    -fx-shadow-highlight-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0.0, 0, 2);
+}
+
+.title {
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-padding: 10;
+    -fx-font-weight: bold;
+}
+
+/* chat view message container style */
+.message-view-content {
+    -fx-padding: 8.0;
+}
+
+/* chat view scroll pane style */
+.chat-view .scroll-pane {
+    -fx-background-insets: 0.0;
+}
+
+.chat-view .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.chat-view .scroll-bar:vertical,
+.chat-view .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-background-radius: 2.0em;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.chat-view .scroll-bar:vertical .thumb,
+.chat-view .scroll-bar:horizontal .thumb {
+    -fx-background-radius: 2.0em;
+}
+
+.chat-view .scroll-bar:vertical .track,
+.chat-view .scroll-bar:horizontal .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 2.0em;
+}
+
+.chat-view .scroll-bar .increment-arrow,
+.chat-view .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+}
+
+.chat-view .scroll-bar:vertical > .increment-button,
+.chat-view .scroll-bar:vertical > .decrement-button {
+    -fx-padding: 5.0 1.0 5.0 1.0;
+    -fx-background-color: transparent;
+}
+
+.chat-view .scroll-bar:horizontal > .increment-button,
+.chat-view .scroll-bar:horizontal > .decrement-button {
+    -fx-padding: 1.0 5.0 1.0 5.0;
+    -fx-background-color: transparent;
+}
+
+.chat-view .scroll-pane:focused {
+    -fx-background-insets: 0.0;
+}
+
+.chat-view .scroll-pane .corner {
+    -fx-background-insets: 0.0;
+}
+
+.bubble-sender, .bubble-receiver {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 8;
+}
+
+.label-sender, .label-receiver {
+    -fx-font-size: 16px;
+}
+
+.timestamp-sender, .timestamp-receiver {
+    -fx-font-size: 12px;
+    -fx-padding: 2 0 0 10;
+    -fx-alignment: bottom-right;
+}
+
+.bubble-receiver-with-logo {
+    -fx-background-radius: 0 10 10 10;
+    -fx-border-radius: 0 10 10 10;
+}
+
+.status-icon-default {
+    -fx-icon-color: -fx-prompt-color;
+    -fx-icon-size: 15;
+}
+
+.status-sent-icon {
+    -fx-icon-code: mdi2c-check;
+}
+
+.status-received-icon {
+    -fx-icon-code: mdi2c-check-all;
+}
+
+.status-read-icon {
+    -fx-icon-code: mdi2c-check-all;
+    -fx-icon-color: #674AEE;
+}
+
+/* chat view input area style */
+.input-area {
+    -fx-pref-height: 50;
+    -fx-spacing: 5;
+    -fx-padding: 5;
+    -fx-alignment: center-right;
+}
+
+.input-area > .text-field {
+    -fx-alignment: center-left;
+}
+
+.send-button {
+    -fx-background-radius: 18;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 4, 0.0, 0, 2);
+}
+
+.send-button .ikonli-font-icon {
+    -fx-icon-code: mdi2s-send;
+}

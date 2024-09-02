@@ -1,0 +1,93 @@
+@import 'chat-view-style.css';
+
+* {
+    -fx-primary-color: #BB86FC;
+    -fx-secondary-color: #03DAC6;
+    -fx-main-color: #1E1E1E;
+}
+
+.root {
+    -fx-background-color: -fx-main-color;
+}
+
+/* chat view header style */
+.header {
+    -fx-background-color: -fx-primary-color;
+}
+
+.title {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24;
+    -fx-font-weight: 500;
+}
+
+.chat-view .scroll-bar:vertical .thumb,
+.chat-view .scroll-bar:horizontal .thumb {
+    -fx-background-color: -fx-primary-color;
+}
+
+.message-view-content {
+    -fx-background-color: -fx-main-color;
+}
+
+/* Dark mode for sender and receiver bubbles */
+.bubble-sender {
+    -fx-background-color: -fx-secondary-color;
+}
+
+.label-sender {
+    -fx-text-fill: #000000;
+}
+
+.timestamp-sender {
+    -fx-text-fill: #918f8f;
+}
+
+.bubble-receiver {
+    -fx-background-color: -fx-primary-color;
+}
+
+.label-receiver {
+    -fx-text-fill: #FFFFFF;
+}
+
+.timestamp-receiver {
+    -fx-text-fill: #d3d0d0;
+}
+
+/* Dark background for input area */
+.input-area {
+    -fx-background-color: #1F2C33;
+}
+
+.input-area > .text-field {
+    -fx-background-color: #2A3942;
+    -fx-prompt-text-fill: #B3B3B3;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Dark mode for send button */
+.send-button {
+    -fx-background-color: -fx-primary-color;
+}
+
+.send-button:hover {
+    -fx-background-color: #3700B3;
+}
+
+.send-button:pressed {
+    -fx-background-color: #6200EE;
+}
+
+.send-button .ikonli-font-icon {
+    -fx-icon-color: #FFFFFF;
+    -fx-icon-size: 20;
+}
+
+.chat-view .scroll-pane {
+    -fx-background-color: -fx-main-color;
+}
+
+.chat-view .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
