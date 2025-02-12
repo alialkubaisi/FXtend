@@ -7,43 +7,32 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Set up Java
         uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 17
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
 
-      - name: Cache Maven packages
-        uses: actions/cache@v3
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v6
         with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-maven-
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
-      - name: Generate Maven settings file
+      - name: Create settings.xml
         run: |
-          mkdir -p $HOME/.m2
-          cat > $HOME/.m2/settings.xml <<'EOF'
-          <?xml version="1.0" encoding="UTF-8"?>
-          <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+          echo "<settings>
             <servers>
               <server>
                 <id>ossrh</id>
-                <username>${env.OSSRH_USERNAME}</username>
-                <password>${env.OSSRH_PASSWORD}</password>
-              </server>
-              <server>
-                <id>github</id>
-                <username>${env.GITHUB_USERNAME}</username>
-                <password>${env.GITHUB_TOKEN}</password>
+                <username>${{ secrets.OSSRH_USERNAME }}</username>
+                <password>${{ secrets.OSSRH_PASSWORD }}</password>
               </server>
             </servers>
             <profiles>
@@ -51,46 +40,23 @@ jobs:
                 <id>central</id>
                 <properties>
                   <gpg.executable>gpg</gpg.executable>
-                  <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
+                  <gpg.passphrase>${{ secrets.GPG_PASSPHRASE }}</gpg.passphrase>
                 </properties>
               </profile>
             </profiles>
-            <activeProfiles>
-              <activeProfile>central</activeProfile>
-            </activeProfiles>
-          </settings>
-          EOF
-        env:
-          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          </settings>" > ~/.m2/settings.xml
 
-      - name: Import GPG key
+      - name: Build and Deploy
+        run: mvn --batch-mode deploy
         env:
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-        run: |
-          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
-
-      - name: Build and Deploy to OSSRH
-        run: mvn clean deploy --settings $HOME/.m2/settings.xml -B
+          MAVEN_OPTS: "--add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.desktop/java.awt.font=ALL-UNNAMED"
 
       - name: Create GitHub Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ github.ref_name }}
-          name: Release ${{ github.ref_name }}
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload Artifact to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            fxtend/target/fxtend-1.0.1.jar
+            fxtend/target/*.jar
+            fxtend-demo/target/*.jar
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
