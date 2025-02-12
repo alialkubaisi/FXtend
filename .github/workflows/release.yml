@@ -22,6 +22,13 @@ jobs:
           server-id: ossrh
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
+
+      - name: Configure GPG
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          echo $GPG_PASSPHRASE | gpg --batch --yes --passphrase-fd 0 --import <(echo "${{ secrets.GPG_PRIVATE_KEY }}")
+
       - name: Publish to the Maven Central Repository
         run: mvn --batch-mode deploy
         env:
