@@ -7,39 +7,90 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish:
+  deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Java for publishing to Maven Central Repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
-          server-id: ossrh
-          server-username: MAVEN_USERNAME
-          server-password: MAVEN_PASSWORD
+          distribution: temurin
+          java-version: 17
 
-      - name: Configure GPG
-        env:
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
+
+      - name: Generate Maven settings file
         run: |
-          echo $GPG_PASSPHRASE | gpg --batch --yes --passphrase-fd 0 --import <(echo "${{ secrets.GPG_PRIVATE_KEY }}")
-
-      - name: Publish to the Maven Central Repository
-        run: mvn --batch-mode deploy
+          mkdir -p $HOME/.m2
+          cat > $HOME/.m2/settings.xml <<'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+            <servers>
+              <server>
+                <id>ossrh</id>
+                <username>${env.OSSRH_USERNAME}</username>
+                <password>${env.OSSRH_PASSWORD}</password>
+              </server>
+              <server>
+                <id>github</id>
+                <username>${env.GITHUB_USERNAME}</username>
+                <password>${env.GITHUB_TOKEN}</password>
+              </server>
+            </servers>
+            <profiles>
+              <profile>
+                <id>central</id>
+                <properties>
+                  <gpg.executable>gpg</gpg.executable>
+                  <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
+                </properties>
+              </profile>
+            </profiles>
+            <activeProfiles>
+              <activeProfile>central</activeProfile>
+            </activeProfiles>
+          </settings>
+          EOF
         env:
-          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
-      - name: Set up Java for publishing to GitHub Packages
-        uses: actions/setup-java@v4
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: Import GPG key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        run: |
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+
+      - name: Build and Deploy to OSSRH
+        run: mvn clean deploy --settings $HOME/.m2/settings.xml -B
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
         with:
-          java-version: '17'
-          distribution: 'temurin'
-      - name: Publish to GitHub Packages
-        run: mvn --batch-mode deploy
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Artifact to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            fxtend/target/fxtend-1.0.1.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
