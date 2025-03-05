@@ -117,3 +117,54 @@ chatView.receiveMessage("Hi! This is a received message.",new Image("/path/to/lo
 ![ChatViewModernWithHeader](fxtend-demo/images/chat_view_modern_header.png)
 ![ChatViewDarkWithHeader](fxtend-demo/images/chat_view_dark_header.png)
 
+### TimelineView
+
+The `TimelineView` is a versatile and customizable JavaFX control for displaying a chronological list of entries with 
+flexible configuration options. It provides an intuitive way to visualize historical events, project changes, or user activities.
+
+#### Key Features
+
+- **Flexible Entry Rendering:** Customize how timeline entries are displayed using a TimelineCellFactory
+- **Automatic Day Grouping:** Optional date-based grouping of entries
+- **Expandable History:** Configurable initial history limit with show more/less functionality
+- **Internationalization Support:** Built-in support for translated text
+- **Vertical Timeline Visualization:** Entries are displayed along a vertical line with interactive knots
+
+#### Usage
+
+To use `TimelineView` in your JavaFX application, instantiate it with a list of `TimelineEntry` objects:
+
+```java
+// Sample timeline entries
+List<TimelineEntry> events = List.of(
+    new TimelineEntry(TimelineTextConstants.CREATE, "Alice", "Created the project repository.", new Date()),
+    new TimelineEntry(TimelineTextConstants.UPDATE, "Bob", "Updated project requirements.", new Date())
+);
+
+// Create a TimelineView with default settings
+TimelineView<TimelineEntry> timeline = new TimelineView<>("Project History", events);
+```
+##### Custom Cell Rendering
+For advanced customization, you can define a TimelineCellFactory to control how each entry is displayed:
+
+```java
+TimelineCellFactory<TimelineEntry> cellFactory = (event, isNewDay) -> {
+    GridPane cell = new GridPane();
+    cell.setHgap(10);
+
+    Label actionLabel = new Label(event.action().getTranslatedMessage());
+    Label userLabel = new Label(event.username());
+    Label dateLabel = new Label(new SimpleDateFormat("MMM dd, yyyy HH:mm").format(event.date()));
+
+    cell.add(actionLabel, 0, 0);
+    cell.add(userLabel, 1, 0);
+    cell.add(dateLabel, 2, 0);
+
+    return cell;
+};
+
+// Create a TimelineView with custom rendering
+TimelineView<TimelineEntry> customTimeline = new TimelineView<>("Custom History", events, cellFactory, TimelineEntry::date);
+```
+![TimelineView](fxtend-demo/images/timeline.gif)
+
