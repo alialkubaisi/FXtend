@@ -1,6 +1,6 @@
 # FXtend - Extending JavaFX Controls
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.alialkubaisi/fxtend.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.alialkubaisi/fxtend/1.0.1)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.alialkubaisi/fxtend.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.alialkubaisi/fxtend/1.0.2)
 ![Java Version](https://img.shields.io/badge/Java-%3E%3D%2017-blue)
 ![JavaFX Version](https://img.shields.io/badge/JavaFX-%2022-blue)
 ![License](https://img.shields.io/badge/License-Apache%202.0-green)
@@ -25,14 +25,14 @@ FXtend can be included in your JavaFX project as a dependency using Maven or Gra
 <dependency>
     <groupId>io.github.alialkubaisi</groupId>
     <artifactId>fxtend</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```
-implementation 'io.github.alialkubaisi:fxtend:1.0.1'
+implementation 'io.github.alialkubaisi:fxtend:1.0.2'
 ```
 
 ## Controls

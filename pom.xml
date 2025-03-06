@@ -6,7 +6,7 @@
 
     <groupId>io.github.alialkubaisi</groupId>
     <artifactId>fxtend-parent</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>pom</packaging>
 
     <name>FXtend Parent</name>

@@ -7,13 +7,13 @@
     <parent>
         <groupId>io.github.alialkubaisi</groupId>
         <artifactId>fxtend-parent</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>fxtend-demo</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <name>FXtend Demo</name>
     <description>A demo project for FXtend to show usage of FXtend controls</description>
@@ -47,7 +47,7 @@
         <dependency>
             <groupId>io.github.alialkubaisi</groupId>
             <artifactId>fxtend</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
