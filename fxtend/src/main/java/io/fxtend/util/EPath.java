@@ -12,7 +12,13 @@ public enum EPath
     // chat view
     CHAT_VIEW_DEFAULT_STYLE("chat-view-default-style.css"),
     CHAT_VIEW_MODERN_STYLE("chat-view-modern-style.css"),
-    CHAT_VIEW_DARK_STYLE("chat-view-dark-style.css");
+    CHAT_VIEW_DARK_STYLE("chat-view-dark-style.css"),
+
+    // timeline
+    TIMELINE_VIEW_STYLE("timeline-view-style.css"),
+
+    // Information button
+    INFORMATION_BUTTON_STYLE("information-button-style.css");
 
     private String path;
 
@@ -25,4 +31,4 @@ public enum EPath
     {
         return path;
     }
-}
+    }

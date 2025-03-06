@@ -1,0 +1,49 @@
+.information-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 6px;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 0);
+    -fx-transition: -fx-background-color 0.3s ease;
+}
+
+.information-button:hover {
+    -fx-background-color: rgba(25, 118, 210, 0.1);
+    -fx-cursor: hand;
+}
+
+.information-button:pressed {
+    -fx-background-color: rgba(25, 118, 210, 0.2);
+}
+
+.information-button > .ikonli-font-icon {
+    -fx-icon-color: #2196F3;
+    -fx-icon-size: 24;
+    -fx-effect: dropshadow(gaussian, rgba(33, 150, 243, 0.3), 3, 0, 0, 0);
+}
+
+.info-container {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-padding: 15;
+}
+
+.info-label {
+    -fx-text-fill: #212121;
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+    -fx-line-height: 1.6;
+
+    /* Smooth text rendering */
+    -fx-font-smoothing-type: lcd;
+}
+
+.popover {
+    -fx-background-color: white;
+}
+
+.popover > .border {
+    -fx-background-color: transparent;
+}

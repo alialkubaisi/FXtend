@@ -9,4 +9,6 @@ open module fxtend {
     exports io.fxtend.autocomplete;
     exports io.fxtend.password;
     exports io.fxtend.chatview;
+    exports io.fxtend.timeline;
+    exports io.fxtend.information;
 }
