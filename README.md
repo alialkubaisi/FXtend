@@ -168,3 +168,28 @@ TimelineView<TimelineEntry> customTimeline = new TimelineView<>("Custom History"
 ```
 ![TimelineView](fxtend-demo/images/timeline.gif)
 
+### InformationDecorator
+The `InformationDecorator` control in FXtend is a versatile decorator component that enhances any JavaFX node by adding 
+an information button with a popover. It wraps your target control and automatically displays context-sensitive help 
+when the button is clicked.
+
+#### Key Features
+
+- **Decorator Pattern:** Wrap any JavaFX node to provide on-demand help.
+- **Customizable Button Position:** Place the info button on the left or right side (using Pos.CENTER_LEFT or Pos.CENTER_RIGHT).
+- **Stylish Popover:** A customizable popover displays the provided help text.
+- **Simplified Integration:** Use the InformationFactory for one-line decoration.
+- **Thread-Safe UI Updates:** Ensures popover toggling is executed on the JavaFX Application Thread.
+
+#### Usage
+Wrap your node with the information decorator using the factory methods:
+
+```java 
+// Decorate a TextField with an information button (default position: right)
+InformationDecorator decoratedField = InformationFactory.addInfoTo(myTextField, "Enter your email address for account recovery.");
+
+// Decorate a TextField with the information button on the left
+InformationDecorator decoratedFieldLeft = InformationFactory.addInfoTo(myTextField, "Enter your full name as shown on official documents.", Pos.CENTER_LEFT);
+```
+
+![InformationDecorator](fxtend-demo/images/info-decorator.png)

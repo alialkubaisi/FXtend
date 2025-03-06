@@ -1,5 +1,6 @@
 package io.fxtend.timeline;
 
+import io.fxtend.util.EPath;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -107,7 +108,7 @@ public class TimelineView<T> extends VBox
         this.dateExtractor = dateExtractor;
         this.cellFactory = cellFactory != null ? cellFactory : (TimelineCellFactory<T>) createDefaultCellFactory();
 
-        getStylesheets().add(Objects.requireNonNull(TimelineView.class.getResource("timelineview.css")).toExternalForm());
+        getStylesheets().add(Objects.requireNonNull(TimelineView.class.getResource(EPath.TIMELINE_VIEW_STYLE.getPath())).toExternalForm());
         getStyleClass().add("timeline-container");
         setFillWidth(true);
         setMaxWidth(Double.MAX_VALUE);
