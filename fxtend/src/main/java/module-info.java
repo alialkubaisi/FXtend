@@ -11,4 +11,5 @@ open module fxtend {
     exports io.fxtend.chatview;
     exports io.fxtend.timeline;
     exports io.fxtend.information;
+    exports io.fxtend.kanban;
 }

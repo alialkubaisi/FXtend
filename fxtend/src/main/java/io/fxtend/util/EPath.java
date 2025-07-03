@@ -18,7 +18,10 @@ public enum EPath
     TIMELINE_VIEW_STYLE("timeline-view-style.css"),
 
     // Information button
-    INFORMATION_BUTTON_STYLE("information-button-style.css");
+    INFORMATION_BUTTON_STYLE("information-button-style.css"),
+
+    // Kanban
+    KANBAN_STYLE("kanban-style.css");
 
     private String path;
 

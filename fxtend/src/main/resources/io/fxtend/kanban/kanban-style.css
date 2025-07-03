@@ -1,0 +1,140 @@
+.kanban-board {
+    -fx-background-color: #f4f5f7;
+}
+
+.kanban-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.kanban-scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.kanban-scroll-pane .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.kanban-scroll-pane .scroll-bar .track {
+    -fx-background-color: #e4e6ea;
+    -fx-border-color: transparent;
+    -fx-background-radius: 2;
+    -fx-border-radius: 2;
+}
+
+.kanban-scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #c1c7d0;
+    -fx-background-radius: 2;
+    -fx-border-radius: 2;
+}
+
+.kanban-scroll-pane .scroll-bar .thumb:hover {
+    -fx-background-color: #a5adba;
+}
+
+.kanban-scroll-pane .scroll-bar .thumb:pressed {
+    -fx-background-color: #8993a4;
+}
+
+.kanban-list {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 4, 0, 0, 2);
+}
+
+.kanban-list-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #172b4d;
+}
+
+.kanban-list-count {
+    -fx-font-size: 12px;
+    -fx-text-fill: #5e6c84;
+    -fx-font-weight: normal;
+}
+
+.kanban-list-title-text-field {
+    -fx-background-color: #dcdcdc;
+    -fx-background-radius: 8px;
+    -fx-padding: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 4, 0, 0, 2);
+}
+
+.kanban-list-header {
+    -fx-padding: 15;
+}
+
+.kanban-cards-container {
+    -fx-background-color: #dcdcdc;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 4, 0, 0, 2);
+}
+
+.kanban-card {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.kanban-cards-scroll {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.kanban-cards-scroll .viewport {
+    -fx-background-color: transparent;
+}
+
+.kanban-cards-scroll .scroll-bar {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8;
+}
+
+.kanban-cards-scroll .scroll-bar .track {
+    -fx-background-color: #ddd;
+    -fx-border-color: transparent;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+.kanban-cards-scroll .scroll-bar .thumb {
+    -fx-background-color: #bbb;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+.kanban-cards-scroll .scroll-bar .thumb:hover {
+    -fx-background-color: #999;
+}
+
+.kanban-add-card-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #3f51b5;
+    -fx-font-weight: bold;
+}
+
+.kanban-add-card-button:hover {
+    -fx-background-color: #ddd;
+    -fx-cursor: hand;
+}
+
+.kanban-add-list-button {
+    -fx-background-color: #3f51b5;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+.kanban-add-list-button:hover {
+    -fx-background-color: #6071CA;
+    -fx-cursor: hand;
+}
